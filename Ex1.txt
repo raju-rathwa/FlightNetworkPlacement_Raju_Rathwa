@@ -1,0 +1,25 @@
+/* Approach to Problem 1:
+
+--> We use an int array "stack" to maintain a stack. maximum size is of 10, for 0-9.
+
+--> For 1.a
+
+	 - We use a static integer, "nextpush", that keeps track of the next push expected. For any push out of order, it is disallowed as comparioson with "nextpush" value.
+	- Pop is in its natural form, removing and returning the tomost value of the stack.
+	- The "show" function enlists current content of the stack.
+
+
+--> For 1.b
+
+	- The "validate" method contains the algorithm to check the validness of pattern, which is enterred by user.
+	- For illustrative purpose(and also since we're using an array and not a linked list), we've fixed the pattern length to "10", no more & no less allowed & also, we expect each digit to be distinct(i.e 0-9 are all present in the pattern).
+	- To validate a given pattern, we take the fact into consideration that by monitoring successive values, the validness can be determined as follows : 
+		-- To mark popped digits, we use a "status"(integer array of 10), all initially set, and reset on popping(i.e when the digit is encountered in the pattern.).
+		-- If a digit is more than the following one in the pattern, there is no conflict.
+		-- If a digit is less than the following one in the pattern, we check the difference; if one, there is no conflict; else we check the "status" of all the digits between the two digits in question. if any digits hasn't been popped yet, the pattern is invalid.
+		-- when a duplicate digit is found, test terminates announcing an invalid pattern.
+		-- If all the above tests for invalidness are unsuccessful, test terminates announcing a valid pattern.
+
+The program is interactive, asking the user to select an operation from : 1. Push, 2. Pop, 3. Show, 4. Check Pattern, 5. Exit.
+*/
+
